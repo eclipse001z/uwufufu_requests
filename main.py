@@ -7,11 +7,11 @@ game_id = input("Game ID: ")
 
 
 print ("\nPerson to win alot/boost in rankings")
-winner = input("Winner ID: ") 
+winner = input("Winner ID: ") # winner
 print ("\n Person to lose alot/tank in rankings\n")
 tank = input("Tank ID: ") # Person to lose alot 
 print("\n")
-amm = int(input("Amount Of Boosts: "))
+amm = int(input("Amount Of Boosts: ")) # amount of boosts
 ua = UserAgent()
 
 headers = {
@@ -31,7 +31,7 @@ async def start_game(session, payload):
                 "startedGameId": startedGameId,
                 "selections": [ #64359d3ebf2461aba7f6ff83
                     {"_id": tank, "wins": False},
-                    {"_id": winner, "wins": True} #valk
+                    {"_id": winner, "wins": True} 
                 ]
             }
 
@@ -50,7 +50,7 @@ async def main():
     }
 
     async with aiohttp.ClientSession() as session:
-        for _ in range(40):
+        for _ in range(amm):
             task = asyncio.create_task(start_game(session, payload))
             tasks.append(task)
 
